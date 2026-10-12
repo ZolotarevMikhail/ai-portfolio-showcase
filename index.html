@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Витрина: изображения и видео</title>
+<style>
+  /* ===== Темы (светлая и тёмная) ===== */
+  :root {
+    --bg: #f7f6f2;
+    --card: #ffffff;
+    --text: #22221f;
+    --muted: #6f6d64;
+    --accent: #cf6d13;
+    --accent-soft: #f4e2cf;
+    --line: #e4e2da;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17171a;
+      --card: #222226;
+      --text: #eceade;
+      --muted: #9d9c90;
+      --accent: #f09f4e;
+      --accent-soft: #3a2c1d;
+      --line: #35343b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17171a;
+    --card: #222226;
+    --text: #eceade;
+    --muted: #9d9c90;
+    --accent: #f09f4e;
+    --accent-soft: #3a2c1d;
+    --line: #35343b;
+  }
+
+  /* ===== База ===== */
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--text);
+         font: 16px/1.55 -apple-system, "Segoe UI", Arial, sans-serif; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+
+  header { border-bottom: 1px solid var(--line); padding: 22px 0 18px; }
+  h1 { font-size: 26px; letter-spacing: -0.02em; }
+  .sub { color: var(--muted); margin-top: 4px; font-size: 15px; }
+  .tagline { display: inline-block; margin-top: 10px; padding: 4px 10px;
+             background: var(--accent-soft); color: var(--accent);
+             border-radius: 20px; font-size: 13px; font-weight: 600; }
+  #theme-toggle { float: right; border: 1px solid var(--line); background: var(--card);
+                  color: var(--muted); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+
+  section { padding: 26px 0 8px; }
+  h2 { font-size: 21px; margin-bottom: 4px; }
+  h2 .n { color: var(--accent); }
+  .lead { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
+
+  .card { background: var(--card); border: 1px solid var(--line);
+          border-radius: 14px; padding: 14px; margin-bottom: 16px; }
+  .card h3 { font-size: 16px; margin-bottom: 8px; }
+  .card p.note { color: var(--muted); font-size: 14px; margin-top: 8px; }
+  img.work { width: 100%; display: block; border-radius: 10px; }
+  video.work { width: 100%; display: block; border-radius: 10px; background: #000; }
+  .btn { display: inline-block; margin-top: 10px; padding: 9px 18px; border: none;
+         border-radius: 10px; background: var(--accent); color: #fff;
+         font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; }
+  .btn:hover { opacity: .9; }
+  .btn.ghost { background: var(--accent-soft); color: var(--accent); }
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .links { margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .links a { color: var(--accent); text-decoration: none; margin-right: 18px; }
+  footer { color: var(--muted); font-size: 13px; padding: 20px 0 34px; }
+  @media (min-width: 700px) { h1 { font-size: 32px; } section { padding: 32px 0 10px; } }
+</style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+
+  <!-- ===== Шапка ===== -->
+  <header>
+    <button id="theme-toggle" title="Светлая и тёмная тема">🌙</button>
+    <h1>Изображение / видео</h1>
+    <div class="sub">Работы, сделанные с помощью нейросетей: от идеи до готового файла</div>
+    <div class="tagline">3 проекта · всё работает на этой странице</div>
+  </header>
+
+  <!-- ===== Проект 1: изображения ===== -->
+  <section id="p1">
+    <h2><span class="n">1</span> · Изображения</h2>
+    <p class="lead">Серия «мини-человечки»: крошечные люди в крупном человеческом мире, макро-миниатюры.</p>
+    <div class="card">
+      <h3>Мини-персонал подключает старших к онлайн-сервису</h3>
+      <img class="work" src="images/mini-people-laptop.png" alt="Крошечные человечки тянут провода к деревянному ноутбуку с кнопкой START TEST">
+      <p class="note">Простые текстовые промпты, полный набор работ и промпты — в репозитории проекта.</p>
+      <div class="btn-row">
+        <a class="btn" href="https://github.com/ZolotarevMikhail/ai-image-generation" target="_blank" rel="noopener">Все изображения и промпты</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Проект 2: короткое видео ===== -->
+  <section id="p2">
+    <h2><span class="n">2</span> · Короткое видео</h2>
+    <p class="lead">Ролики, полностью сгенерированные нейросетями по текстовому описанию. Проигрываются прямо здесь.</p>
+    <div class="card">
+      <h3>Мотоциклист в закате — 5 сек</h3>
+      <video class="work" id="v-biker" src="videos/biker-sunset.mp4" controls preload="metadata" playsinline></video>
+      <div class="btn-row"><button class="btn" onclick="document.querySelector('#v-biker').play()">Смотреть</button></div>
+      <p class="note">PixVerse V6 (фирменная метка генератора в кадре).</p>
+    </div>
+    <div class="card">
+      <h3>Маленькие человечки: сборы на море — 20 сек, с музыкой и титрами</h3>
+      <video class="work" id="v-sea" src="videos/family-sea.mp4" controls preload="metadata" playsinline></video>
+      <div class="btn-row"><button class="btn" onclick="document.querySelector('#v-sea').play()">Смотреть</button></div>
+      <p class="note">Генерация Wan 3.0 через API + титры и музыка. Полный процесс — проект 3 ниже.</p>
+    </div>
+  </section>
+
+  <!-- ===== Проект 3: сценарий → ролик ===== -->
+  <section id="p3">
+    <h2><span class="n">3</span> · Сценарий → готовый ролик</h2>
+    <p class="lead">Сквозной процесс: сценарий с таймингом → промпт генератора → генерация через API → титры.</p>
+    <div class="card">
+      <h3>«Море зовёт!» — финальный ролик</h3>
+      <video class="work" id="v-sea" src="videos/family-sea.mp4" controls preload="metadata" playsinline></video>
+      <p class="note">20 сек, 480×854 (вертикальный 9:16). В репозитории — сценарий, промпты, два
+        работающих скрипта (генерация и наложение титров) и версии «до/после».</p>
+      <div class="btn-row">
+        <a class="btn" href="https://github.com/ZolotarevMikhail/ai-video-pipeline" target="_blank" rel="noopener">Сценарий, промпты и скрипты</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Ссылки ===== -->
+  <div class="links">
+    <a href="https://github.com/ZolotarevMikhail/ai-image-generation" target="_blank" rel="noopener">Репозиторий: изображения</a>
+    <a href="https://github.com/ZolotarevMikhail/ai-short-videos" target="_blank" rel="noopener">Репозиторий: короткое видео</a>
+    <a href="https://github.com/ZolotarevMikhail/ai-video-pipeline" target="_blank" rel="noopener">Репозиторий: сценарий → ролик</a>
+  </div>
+
+  <footer>Витрина пополняется по мере появления новых работ · страница открывается с любого устройства</footer>
+</div>
+
+<script>
+  // Переключатель светлой/тёмной темы
+  var btn = document.getElementById('theme-toggle');
+  var root = document.documentElement;
+  var saved = localStorage.getItem('showcase-theme');
+  if (saved) root.setAttribute('data-theme', saved);
+  btn.addEventListener('click', function () {
+    var dark = root.getAttribute('data-theme') === 'dark'
+      || (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('showcase-theme', next);
+    btn.textContent = next === 'dark' ? '☀️' : '🌙';
+  });
+</script>
+</body>
+</html>
